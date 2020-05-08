@@ -34,9 +34,13 @@ RUN mkdir $dir && mkdir $dir1
 #RUN /datos1/add_user.sh
 
 ##ESPOSE##
-RUN apt-get install -f apache2
+RUN apt-get install -y apache2
 EXPOSE 80
 ADD entrypoint.sh /datos1
+
+##VOLUME##
+ADD paginas /var/www/html
+VOLUME ["/var/www/html"]
 
 ##CMD##
 CMD /datos1/entrypoint.sh
